@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <title>Acacio Barros</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root{
+      --bg: #f6f3ee;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #5b5b5b;
+      --accent: #2f5d62;
+      --rule: #e6e1d8;
+      --shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+    body{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.25rem 1.5rem 4rem;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* Cards */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 18px;
+    }
+
+    /* Header card: slightly lighter than before */
+    .header{
+      padding: 1.7rem 2rem 1.45rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.045);
+      margin-bottom: 2.2rem;
+    }
+
+    h1{
+      font-size: 2.65rem;
+      margin: 0;
+      font-weight: normal;
+      letter-spacing: 0.01em;
+    }
+
+    /* Content card: slightly more presence */
+    .content{
+      padding: 2.35rem 2.35rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .lang-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.4rem;
+    }
+
+    /* Section headers: softened from all-caps */
+    h2{
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: none; /* <- key change */
+      color: var(--accent);
+      margin: 0 0 0.9rem;
+    }
+
+    p{
+      margin: 0;
+      font-size: 1.18rem; /* slightly larger bio */
+      max-width: 34ch;    /* helps avoid awkward wraps */
+    }
+
+    .rule{
+      border-top: 1px solid var(--rule);
+      margin: 2.2rem 0;
+    }
+
+    footer{
+      margin-top: 3rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--rule);
+      font-size: 1.06rem;
+      color: var(--muted);
+    }
+
+    a{
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(47,93,98,0.35);
+    }
+    a:hover{
+      border-bottom-color: rgba(47,93,98,0.75);
+    }
+
+    /* Two columns on wide screens */
+    @media (min-width: 860px){
+      .lang-grid{
+        grid-template-columns: 1fr 1fr;
+        gap: 3.2rem;
+      }
+      .rule{ display:none; }
+      p{ max-width: 38ch; } /* gives nicer line breaks on desktop */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card header">
+    <h1>Acacio Barros</h1>
+  </div>
+
+  <div class="card content">
+    <div class="lang-grid">
+      <section>
+        <h2>Português</h2>
+        <p>
+          Acacio Barros nasceu em Barra Mansa (RJ). É físico e filósofo.
+          Escreve poesia em português e inglês. Vive na Califórnia, EUA.
+        </p>
+      </section>
+
+      <div class="rule"></div>
+
+      <section>
+        <h2>English</h2>
+        <p>
+          Acacio Barros was born in Barra Mansa, Brazil. He is a physicist and
+          philosopher. He writes poetry in Portuguese and English. He lives in
+          California, USA.
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        Contato / Contact:
+        <a href="mailto:sliders.tastes_9c@icloud.com">sliders.tastes_9c@icloud.com</a>
+      </p>
+    </footer>
+  </div>
+
+</body>
+</html>
