@@ -1,149 +1,624 @@
 <!doctype html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8" />
-  <title>Acacio Barros</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    :root{
-      --bg: #f6f3ee;
-      --card: #ffffff;
-      --text: #1a1a1a;
-      --muted: #5b5b5b;
-      --accent: #2f5d62;
-      --rule: #e6e1d8;
-      --shadow: 0 10px 28px rgba(0,0,0,0.06);
-    }
+<title>Acacio Barros — Poesia</title>
+<meta name="description" content="Poesia de Acacio Barros, em português e inglês. Poetry by Acacio Barros, in Portuguese and English.">
+<meta name="author" content="Acacio Barros">
+<link rel="canonical" href="https://acacio-barros.github.io/">
+<meta name="theme-color" content="#faf9f7">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://acacio-barros.github.io/">
+<meta property="og:title" content="Acacio Barros — Poesia">
+<meta property="og:description" content="Poesia de Acacio Barros, em português e inglês.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
 
-    body{
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3.25rem 1.5rem 4rem;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.7;
-      color: var(--text);
-      background: var(--bg);
-    }
+<style>
+  :root{
+    --paper:      #faf9f7;
+    --ink:        #17171a;
+    --ink-soft:   #55555c;
+    --ink-faint:  #6f6f76;
+    --accent:     #2f4157;
+    --rule:       #e2ded6;
 
-    /* Cards */
-    .card{
-      background: var(--card);
-      border: 1px solid var(--rule);
-      border-radius: 18px;
-    }
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, "Times New Roman", serif;
+  }
 
-    /* Header card: slightly lighter than before */
-    .header{
-      padding: 1.7rem 2rem 1.45rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.045);
-      margin-bottom: 2.2rem;
-    }
+  *, *::before, *::after { box-sizing: border-box; }
 
-    h1{
-      font-size: 2.65rem;
-      margin: 0;
-      font-weight: normal;
-      letter-spacing: 0.01em;
-    }
+  html{
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
 
-    /* Content card: slightly more presence */
-    .content{
-      padding: 2.35rem 2.35rem 2rem;
-      box-shadow: var(--shadow);
-    }
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    .lang-grid{
+  /* Language visibility. Without JS every language block stays readable. */
+  .js.lang-pt [data-lang="en"]{ display: none; }
+  .js.lang-en [data-lang="pt"]{ display: none; }
+  .lang-marker{ display: none; }
+  html:not(.js) .lang-marker{ display: block; }
+  html:not(.js) .langswitch{ display: none; }
+  html:not(.js) .field > div + div{ margin-top: clamp(3.5rem, 9vw, 6rem); }
+
+  a{
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(47,65,87,0.4);
+  }
+  a:hover{ border-bottom-color: var(--accent); }
+
+  a:focus-visible,
+  button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 1px;
+  }
+
+  /* ---------- Page frame ---------- */
+
+  .page{
+    padding: clamp(2.5rem, 7vw, 5.5rem) clamp(1.375rem, 6vw, 3rem) clamp(4rem, 10vw, 8rem);
+  }
+
+  /* ---------- Rail (apparatus voice: sans) ---------- */
+
+  .rail{
+    font-family: var(--sans);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .wordmark{
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .rail-meta{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 0.85rem;
+  }
+
+  .discipline{
+    margin: 0;
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .discipline span{ display: block; }
+
+  .langswitch{
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .langswitch button{
+    font: inherit;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: none;
+    border: 0;
+    padding: 0.15rem 0;
+    margin: 0;
+    color: var(--ink-faint);
+    cursor: pointer;
+  }
+  .langswitch button:hover{ color: var(--ink); }
+  .langswitch button[aria-pressed="true"]{
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .langsep{
+    font-size: 0.75rem;
+    color: var(--rule);
+  }
+
+  .railnav{ margin-top: 1.6rem; }
+  .railnav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+  }
+  .railnav a{
+    font-size: 0.8125rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+    border-bottom: 0;
+  }
+  .railnav a:hover{ color: var(--ink); }
+
+  /* ---------- Reading field (literary voice: serif) ---------- */
+
+  .field{ max-width: 44rem; }
+
+  .lang-marker{
+    font-family: var(--sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 1.5rem;
+  }
+
+  .section{ margin: 0 0 clamp(3.5rem, 9vw, 6rem); }
+  .section:last-child{ margin-bottom: 0; }
+
+  .section-head{
+    font-family: var(--sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 2rem;
+  }
+
+  .prose{
+    max-width: 34rem;
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .prose + .prose{ margin-top: 1.1rem; }
+
+  /* ---------- Poems ----------
+     Structure is content: a stanza is a paragraph, a line is a block.
+     A line too long for the viewport wraps with a hanging indent, so a
+     continuation never reads as a new line of verse. */
+
+  .poem{ margin: 0 0 clamp(3rem, 7vw, 4.5rem); }
+  .poem:last-child{ margin-bottom: 0; }
+
+  .poem-title{
+    font-family: var(--sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin: 0 0 1.5rem;
+  }
+
+  .stanza{
+    margin: 0 0 1.55em;
+    hyphens: none;
+  }
+  .stanza:last-child{ margin-bottom: 0; }
+
+  .line{
+    display: block;
+    padding-left: 1.4em;
+    text-indent: -1.4em;
+    line-height: 1.5;
+  }
+  .line.indent-1{ margin-left: 2ch; }
+  .line.indent-2{ margin-left: 4ch; }
+  .line.indent-3{ margin-left: 6ch; }
+
+  /* ---------- Publication apparatus ---------- */
+
+  .poem-note{
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.01em;
+    color: var(--ink-faint);
+    margin: 1.6rem 0 0;
+  }
+
+  /* Published / forthcoming lists. The hairline appears only when a poem
+     precedes the list, so a section with no poems on the page stays clean. */
+  .publications{
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 34rem;
+    margin: 0;
+  }
+  .poem + .publications{
+    margin-top: clamp(3rem, 7vw, 4.5rem);
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .publications dt{
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 0.45rem;
+  }
+  .publications dd{ margin: 0; }
+  .publications dd + dd{ margin-top: 0.4rem; }
+  .publications dd + dt{ margin-top: 1.6rem; }
+
+  .poem-note cite,
+  .publications cite{ font-style: italic; }
+
+  /* ---------- Contact form ---------- */
+
+  .form{
+    max-width: 34rem;
+    margin: 0;
+  }
+
+  .form-row{ margin-bottom: 1.85rem; }
+
+  .form label{
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.55rem;
+  }
+
+  .form input[type="text"],
+  .form input[type="email"],
+  .form textarea{
+    display: block;
+    width: 100%;
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    border-radius: 0;
+    padding: 0.35rem 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form textarea{
+    min-height: 9.5rem;
+    resize: vertical;
+  }
+
+  .form input:hover,
+  .form textarea:hover{ border-bottom-color: var(--ink-faint); }
+
+  .form input:focus,
+  .form textarea:focus{ border-bottom-color: var(--accent); }
+
+  .form input:focus-visible,
+  .form textarea:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  /* Spam trap. Hidden from sight, keyboard and assistive technology. */
+  .gotcha{
+    display: none;
+  }
+
+  .submit{
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: none;
+    border: 1px solid var(--ink-faint);
+    border-radius: 0;
+    padding: 0.72rem 1.7rem;
+    margin-top: 0.6rem;
+    cursor: pointer;
+  }
+  .submit:hover{
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .aside{
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+    max-width: 34rem;
+    margin: 2.6rem 0 0;
+  }
+
+  /* ---------- Desktop: two fields ---------- */
+
+  @media (min-width: 62em){
+    .page{
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.4rem;
+      grid-template-columns: 12.5rem minmax(0, 44rem);
+      column-gap: clamp(3.5rem, 7vw, 7rem);
+      justify-content: center;
+      align-items: start;
     }
 
-    /* Section headers: softened from all-caps */
-    h2{
-      font-size: 1.05rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: none; /* <- key change */
-      color: var(--accent);
-      margin: 0 0 0.9rem;
+    .rail{
+      grid-column: 1;
+      grid-row: 1;
+      position: sticky;
+      top: clamp(2.5rem, 7vw, 5.5rem);
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: 0;
     }
 
-    p{
-      margin: 0;
-      font-size: 1.18rem; /* slightly larger bio */
-      max-width: 34ch;    /* helps avoid awkward wraps */
+    .rail-meta{
+      display: block;
+      margin-top: 1.1rem;
     }
+    .langswitch{ margin-top: 1.6rem; }
 
-    .rule{
-      border-top: 1px solid var(--rule);
-      margin: 2.2rem 0;
+    .railnav ul{
+      display: block;
     }
+    .railnav li + li{ margin-top: 0.55rem; }
 
-    footer{
-      margin-top: 3rem;
-      padding-top: 1.6rem;
-      border-top: 1px solid var(--rule);
-      font-size: 1.06rem;
-      color: var(--muted);
-    }
+    .field{ grid-column: 2; grid-row: 1; }
+  }
+</style>
 
-    a{
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(47,93,98,0.35);
-    }
-    a:hover{
-      border-bottom-color: rgba(47,93,98,0.75);
-    }
-
-    /* Two columns on wide screens */
-    @media (min-width: 860px){
-      .lang-grid{
-        grid-template-columns: 1fr 1fr;
-        gap: 3.2rem;
-      }
-      .rule{ display:none; }
-      p{ max-width: 38ch; } /* gives nicer line breaks on desktop */
-    }
-  </style>
+<script>document.documentElement.className = "js lang-pt";</script>
 </head>
 
 <body>
 
-  <div class="card header">
-    <h1>Acacio Barros</h1>
-  </div>
+<div class="page">
 
-  <div class="card content">
-    <div class="lang-grid">
-      <section>
-        <h2>Português</h2>
-        <p>
-          Acacio Barros nasceu em Barra Mansa (RJ). É físico e filósofo.
-          Escreve poesia em português e inglês. Vive na Califórnia, EUA.
-        </p>
+  <header class="rail">
+    <h1 class="wordmark">Acacio Barros</h1>
+
+    <div class="rail-meta">
+      <p class="discipline">
+        <span data-lang="pt" lang="pt">Poesia</span><span data-lang="en" lang="en">Poetry</span>
+      </p>
+
+      <div class="langswitch" role="group" aria-label="Idioma / Language">
+        <button type="button" data-set-lang="pt" aria-pressed="true">PT</button>
+        <span class="langsep" aria-hidden="true">/</span>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <nav class="railnav" data-lang="pt" lang="pt" aria-label="Seções">
+      <ul>
+        <li><a href="#poemas">Poemas</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <nav class="railnav" data-lang="en" lang="en" aria-label="Sections">
+      <ul>
+        <li><a href="#poems">Poems</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="field">
+
+    <!-- ===================== Português ===================== -->
+    <div data-lang="pt" lang="pt">
+      <p class="lang-marker">Português</p>
+
+      <section class="section" id="poemas" aria-labelledby="poemas-head">
+        <h2 class="section-head" id="poemas-head">Poemas</h2>
+
+        <!--
+          PONTO DE INSERÇÃO DOS POEMAS.
+
+          Um poema por <article class="poem">. Uma estrofe por <p class="stanza">.
+          Um verso por <span class="line">. Nada de <br>: a estrutura fica no HTML,
+          nunca no CSS, e assim quebras de verso, quebras de estrofe, recuo,
+          pontuação e maiúsculas ficam preservados exatamente como escritos.
+
+          <article class="poem">
+            <h3 class="poem-title">Título do poema</h3>
+            <p class="stanza">
+              <span class="line">verso</span>
+              <span class="line">verso</span>
+            </p>
+            <p class="stanza">
+              <span class="line">verso</span>
+              <span class="line indent-1">verso recuado</span>
+            </p>
+          </article>
+
+          Recuo deliberado: class="line indent-1" (ou indent-2, indent-3).
+          Linha em branco dentro de uma estrofe: <span class="line">&#160;</span>
+        -->
+
+        <article class="poem">
+          <h3 class="poem-title">Saideira</h3>
+          <p class="stanza">
+            <span class="line">O que era sol</span>
+            <span class="line indent-1">agora é noite</span>
+            <span class="line">E o que era folia</span>
+            <span class="line indent-1">agora é sossego</span>
+            <span class="line">E o que era areia</span>
+            <span class="line indent-1">agora é fogueira</span>
+            <span class="line">E o que era brisa</span>
+            <span class="line indent-1">agora é arrepio</span>
+          </p>
+          <p class="stanza">
+            <span class="line">O que era roda</span>
+            <span class="line indent-1">agora é dupla</span>
+            <span class="line">O que era olhar desviado</span>
+            <span class="line indent-1">agora é toque</span>
+          </p>
+          <p class="stanza">
+            <span class="line">O que era praia</span>
+            <span class="line indent-1">agora—estrelas.</span>
+          </p>
+          <p class="poem-note">Derivado de <cite>O Churrasco</cite>.</p>
+        </article>
+
+        <dl class="publications">
+          <dt>Publicados</dt>
+          <dd>
+            <cite>O Elefante</cite>, <cite>Engarrafamento</cite>, <cite>Labuta</cite> e
+            <cite>O Churrasco</cite> —
+            <a href="https://proustmagazine.org/proust-magazine-vol-1-no-3-set-2026/" rel="noopener">Proust Magazine</a>,
+            Vol. 1 No. 3, setembro de 2026.
+          </dd>
+
+          <dt>A publicar</dt>
+          <dd>
+            <cite>Marcação</cite>, <cite>Leve</cite>, <cite>Confiança</cite> e
+            <cite>Microcosmografia Vicinal</cite> —
+            NERVO – Colectivo de Poesia, 2027.
+          </dd>
+        </dl>
       </section>
 
-      <div class="rule"></div>
+      <section class="section" id="sobre" aria-labelledby="sobre-head">
+        <h2 class="section-head" id="sobre-head">Sobre</h2>
+        <p class="prose">Acacio Barros é físico e filósofo e escreve poesia em português e em inglês. Sua poesia trata de incerteza, memória, linguagem, família e das maneiras pelas quais procuramos compreender o mundo enquanto nos equivocamos sobre nós mesmos. Vive na Califórnia, EUA.</p>
+      </section>
 
-      <section>
-        <h2>English</h2>
-        <p>
-          Acacio Barros was born in Barra Mansa, Brazil. He is a physicist and
-          philosopher. He writes poetry in Portuguese and English. He lives in
-          California, USA.
-        </p>
+      <section class="section" id="contato" aria-labelledby="contato-head">
+        <h2 class="section-head" id="contato-head">Contato</h2>
+
+        <form class="form" action="https://formspree.io/f/mvkowokd" method="POST">
+          <input type="hidden" name="_subject" value="Mensagem pelo site">
+
+          <div class="form-row">
+            <label for="pt-nome">Nome</label>
+            <input id="pt-nome" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="form-row">
+            <label for="pt-email">Email</label>
+            <input id="pt-email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-row">
+            <label for="pt-mensagem">Mensagem</label>
+            <textarea id="pt-mensagem" name="message" rows="7" required></textarea>
+          </div>
+
+          <div class="gotcha">
+            <label for="pt-gotcha">Não preencher este campo</label>
+            <input id="pt-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="submit" type="submit">Enviar</button>
+        </form>
+
+        <p class="aside"><a href="https://www.instagram.com/acacio.barros.poet/" rel="noopener">@acacio.barros.poet</a> no Instagram</p>
       </section>
     </div>
 
-    <footer>
-      <p>
-        Contato / Contact:
-        <a href="mailto:sliders.tastes_9c@icloud.com">sliders.tastes_9c@icloud.com</a>
-      </p>
-    </footer>
-  </div>
+    <!-- ===================== English ===================== -->
+    <div data-lang="en" lang="en">
+      <p class="lang-marker">English</p>
+
+      <section class="section" id="poems" aria-labelledby="poems-head">
+        <h2 class="section-head" id="poems-head">Poems</h2>
+
+        <dl class="publications">
+          <dt>Published</dt>
+          <dd>
+            <cite><a href="https://ratsassreview.net/?page_id=4627" rel="noopener">Becoming a Poet</a></cite> —
+            Rat’s Ass Review, Fall–Winter 2026.
+          </dd>
+          <dd>
+            <cite>Plates</cite> and <cite>Lottery</cite> —
+            Meat for Tea: The Valley Review, Yellow issue.
+          </dd>
+        </dl>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-head">
+        <h2 class="section-head" id="about-head">About</h2>
+        <p class="prose">Acacio Barros is a Portuguese-Brazilian-American physicist and philosopher who writes poetry in Portuguese and English. His poetry is about uncertainty, memory, language, family, and the ways we make sense of the world while misunderstanding ourselves. He lives in California.</p>
+      </section>
+
+      <section class="section" id="contact" aria-labelledby="contact-head">
+        <h2 class="section-head" id="contact-head">Contact</h2>
+
+        <form class="form" action="https://formspree.io/f/mvkowokd" method="POST">
+          <input type="hidden" name="_subject" value="Message from website">
+
+          <div class="form-row">
+            <label for="en-name">Name</label>
+            <input id="en-name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="form-row">
+            <label for="en-email">Email</label>
+            <input id="en-email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-row">
+            <label for="en-message">Message</label>
+            <textarea id="en-message" name="message" rows="7" required></textarea>
+          </div>
+
+          <div class="gotcha">
+            <label for="en-gotcha">Do not fill in this field</label>
+            <input id="en-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="submit" type="submit">Send</button>
+        </form>
+
+        <p class="aside"><a href="https://www.instagram.com/acacio.barros.poet/" rel="noopener">@acacio.barros.poet</a> on Instagram</p>
+      </section>
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll(".langswitch button");
+
+    function setLang(lang) {
+      root.classList.remove("lang-pt", "lang-en");
+      root.classList.add("lang-" + lang);
+      root.lang = lang;
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute("aria-pressed", String(buttons[i].dataset.setLang === lang));
+      }
+    }
+
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener("click", function () {
+        setLang(this.dataset.setLang);
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
