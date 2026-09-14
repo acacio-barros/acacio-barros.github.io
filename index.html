@@ -14,6 +14,9 @@
 <meta property="og:url" content="https://acacio-barros.github.io/">
 <meta property="og:title" content="Acacio Barros — Poet / Poeta">
 <meta property="og:description" content="Acacio Barros is a Portuguese-Brazilian-American poet writing in Portuguese and English. Poetry, publications, and selected work.">
+<meta property="og:image" content="https://acacio-barros.github.io/images/sea-foam-rock-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:locale:alternate" content="en_US">
 
@@ -139,6 +142,13 @@
     color: var(--rule);
   }
 
+  .rail-photo{
+    display: block;
+    width: 8.25rem;
+    height: auto;
+    margin: 1.7rem 0 0;
+  }
+
   .railnav{ margin-top: 1.6rem; }
   .railnav ul{
     list-style: none;
@@ -232,8 +242,18 @@
     margin: 1.6rem 0 0;
   }
 
-  /* Published / forthcoming lists. The hairline appears only when a poem
-     precedes the list, so a section with no poems on the page stays clean. */
+  /* Publication record: language of the poems > status > titles and venue. */
+  .pub-group + .pub-group{ margin-top: 2.6rem; }
+
+  .pub-lang{
+    font-family: var(--sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin: 0 0 1.1rem;
+  }
+
   .publications{
     font-family: var(--sans);
     font-size: 0.8125rem;
@@ -241,11 +261,6 @@
     color: var(--ink-soft);
     max-width: 34rem;
     margin: 0;
-  }
-  .poem + .publications{
-    margin-top: clamp(3rem, 7vw, 4.5rem);
-    padding-top: 1.6rem;
-    border-top: 1px solid var(--rule);
   }
   .publications dt{
     font-size: 0.6875rem;
@@ -374,6 +389,10 @@
       margin-top: 1.1rem;
     }
     .langswitch{ margin-top: 1.6rem; }
+    .rail-photo{
+      width: 9.5rem;
+      margin-top: 1.9rem;
+    }
 
     .railnav ul{
       display: block;
@@ -406,9 +425,12 @@
       </div>
     </div>
 
+    <img class="rail-photo" src="images/sea-foam-rock-rail.jpg" width="320" height="400" alt="" decoding="async">
+
     <nav class="railnav" data-lang="pt" lang="pt" aria-label="Seções">
       <ul>
         <li><a href="#poemas">Poemas</a></li>
+        <li><a href="#publicacoes">Publicações</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
@@ -416,7 +438,7 @@
 
     <nav class="railnav" data-lang="en" lang="en" aria-label="Sections">
       <ul>
-        <li><a href="#poems">Poems</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -480,23 +502,45 @@
           </p>
           <p class="poem-note">Derivado de <cite>O Churrasco</cite>.</p>
         </article>
+      </section>
 
-        <dl class="publications">
-          <dt>Publicados</dt>
-          <dd>
-            <cite>O Elefante</cite>, <cite>Engarrafamento</cite>, <cite>Labuta</cite> e
-            <cite>O Churrasco</cite> —
-            <a href="https://proustmagazine.org/proust-magazine-vol-1-no-3-set-2026/" rel="noopener">Proust Magazine</a>,
-            Vol. 1 No. 3, setembro de 2026.
-          </dd>
+      <section class="section" id="publicacoes" aria-labelledby="publicacoes-head">
+        <h2 class="section-head" id="publicacoes-head">Publicações</h2>
 
-          <dt>A publicar</dt>
-          <dd>
-            <cite>Marcação</cite>, <cite>Leve</cite>, <cite>Confiança</cite> e
-            <cite>Microcosmografia Vicinal</cite> —
-            NERVO – Colectivo de Poesia, 2027.
-          </dd>
-        </dl>
+        <div class="pub-group">
+          <h3 class="pub-lang">Em português</h3>
+          <dl class="publications">
+            <dt>Publicados</dt>
+            <dd>
+              <cite>O Elefante</cite>, <cite>Engarrafamento</cite>, <cite>Labuta</cite> e
+              <cite>O Churrasco</cite> —
+              <a href="https://proustmagazine.org/proust-magazine-vol-1-no-3-set-2026/" rel="noopener">Proust Magazine</a>,
+              Vol. 1 No. 3, setembro de 2026.
+            </dd>
+
+            <dt>A publicar</dt>
+            <dd>
+              <cite>Marcação</cite>, <cite>Leve</cite>, <cite>Confiança</cite> e
+              <cite>Microcosmografia Vicinal</cite> —
+              NERVO – Colectivo de Poesia, 2027.
+            </dd>
+          </dl>
+        </div>
+
+        <div class="pub-group">
+          <h3 class="pub-lang">Em inglês</h3>
+          <dl class="publications">
+            <dt>Publicados</dt>
+            <dd>
+              <cite><a href="https://ratsassreview.net/?page_id=4627#Barros2" rel="noopener">Becoming a Poet</a></cite> —
+              Rat’s Ass Review, Fall–Winter 2026.
+            </dd>
+            <dd>
+              <cite>Plates</cite> e <cite>Lottery</cite> —
+              Meat for Tea: The Valley Review, Yellow issue.
+            </dd>
+          </dl>
+        </div>
       </section>
 
       <section class="section" id="sobre" aria-labelledby="sobre-head">
@@ -541,20 +585,43 @@
     <div data-lang="en" lang="en">
       <p class="lang-marker">English</p>
 
-      <section class="section" id="poems" aria-labelledby="poems-head">
-        <h2 class="section-head" id="poems-head">Poems</h2>
+      <section class="section" id="publications" aria-labelledby="publications-head">
+        <h2 class="section-head" id="publications-head">Publications</h2>
 
-        <dl class="publications">
-          <dt>Published</dt>
-          <dd>
-            <cite><a href="https://ratsassreview.net/?page_id=4627#Barros2" rel="noopener">Becoming a Poet</a></cite> —
-            Rat’s Ass Review, Fall–Winter 2026.
-          </dd>
-          <dd>
-            <cite>Plates</cite> and <cite>Lottery</cite> —
-            Meat for Tea: The Valley Review, Yellow issue.
-          </dd>
-        </dl>
+        <div class="pub-group">
+          <h3 class="pub-lang">In Portuguese</h3>
+          <dl class="publications">
+            <dt>Published</dt>
+            <dd>
+              <cite>O Elefante</cite>, <cite>Engarrafamento</cite>, <cite>Labuta</cite> and
+              <cite>O Churrasco</cite> —
+              <a href="https://proustmagazine.org/proust-magazine-vol-1-no-3-set-2026/" rel="noopener">Proust Magazine</a>,
+              Vol. 1 No. 3, September 2026.
+            </dd>
+
+            <dt>Forthcoming</dt>
+            <dd>
+              <cite>Marcação</cite>, <cite>Leve</cite>, <cite>Confiança</cite> and
+              <cite>Microcosmografia Vicinal</cite> —
+              NERVO – Colectivo de Poesia, 2027.
+            </dd>
+          </dl>
+        </div>
+
+        <div class="pub-group">
+          <h3 class="pub-lang">In English</h3>
+          <dl class="publications">
+            <dt>Published</dt>
+            <dd>
+              <cite><a href="https://ratsassreview.net/?page_id=4627#Barros2" rel="noopener">Becoming a Poet</a></cite> —
+              Rat’s Ass Review, Fall–Winter 2026.
+            </dd>
+            <dd>
+              <cite>Plates</cite> and <cite>Lottery</cite> —
+              Meat for Tea: The Valley Review, Yellow issue.
+            </dd>
+          </dl>
+        </div>
       </section>
 
       <section class="section" id="about" aria-labelledby="about-head">
