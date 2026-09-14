@@ -20,390 +20,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:locale:alternate" content="en_US">
 
-<style>
-  :root{
-    --paper:      #faf9f7;
-    --ink:        #17171a;
-    --ink-soft:   #55555c;
-    --ink-faint:  #6f6f76;
-    --accent:     #2f4157;
-    --rule:       #e2ded6;
+<link rel="stylesheet" href="site.css">
 
-    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, "Times New Roman", serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-
-  html{
-    color-scheme: light;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  body{
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-    line-height: 1.62;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* Language visibility. Without JS every language block stays readable. */
-  .js.lang-pt [data-lang="en"]{ display: none; }
-  .js.lang-en [data-lang="pt"]{ display: none; }
-  .lang-marker{ display: none; }
-  html:not(.js) .lang-marker{ display: block; }
-  html:not(.js) .langswitch{ display: none; }
-  html:not(.js) .field > div + div{ margin-top: clamp(3.5rem, 9vw, 6rem); }
-
-  a{
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(47,65,87,0.4);
-  }
-  a:hover{ border-bottom-color: var(--accent); }
-
-  a:focus-visible,
-  button:focus-visible{
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-    border-radius: 1px;
-  }
-
-  /* ---------- Page frame ---------- */
-
-  .page{
-    padding: clamp(2.5rem, 7vw, 5.5rem) clamp(1.375rem, 6vw, 3rem) clamp(4rem, 10vw, 8rem);
-  }
-
-  /* ---------- Rail (apparatus voice: sans) ---------- */
-
-  .rail{
-    font-family: var(--sans);
-    padding-bottom: 2rem;
-    margin-bottom: 3rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .wordmark{
-    margin: 0;
-    font-size: 1.0625rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-
-  .rail-meta{
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-top: 0.85rem;
-  }
-
-  .discipline{
-    margin: 0;
-    font-size: 0.6875rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .discipline span{ display: block; }
-
-  .langswitch{
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .langswitch button{
-    font: inherit;
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    background: none;
-    border: 0;
-    padding: 0.15rem 0;
-    margin: 0;
-    color: var(--ink-faint);
-    cursor: pointer;
-  }
-  .langswitch button:hover{ color: var(--ink); }
-  .langswitch button[aria-pressed="true"]{
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .langsep{
-    font-size: 0.75rem;
-    color: var(--rule);
-  }
-
-  .rail-photo{
-    display: block;
-    width: 8.25rem;
-    height: auto;
-    margin: 1.7rem 0 0;
-  }
-
-  .railnav{ margin-top: 1.6rem; }
-  .railnav ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.4rem;
-  }
-  .railnav a{
-    font-size: 0.8125rem;
-    letter-spacing: 0.03em;
-    color: var(--ink-soft);
-    border-bottom: 0;
-  }
-  .railnav a:hover{ color: var(--ink); }
-
-  /* ---------- Reading field (literary voice: serif) ---------- */
-
-  .field{ max-width: 44rem; }
-
-  .lang-marker{
-    font-family: var(--sans);
-    font-size: 0.6875rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin: 0 0 1.5rem;
-  }
-
-  .section{ margin: 0 0 clamp(3.5rem, 9vw, 6rem); }
-  .section:last-child{ margin-bottom: 0; }
-
-  .section-head{
-    font-family: var(--sans);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin: 0 0 2rem;
-  }
-
-  .prose{
-    max-width: 34rem;
-    margin: 0;
-    text-wrap: pretty;
-  }
-  .prose + .prose{ margin-top: 1.1rem; }
-
-  /* ---------- Poems ----------
-     Structure is content: a stanza is a paragraph, a line is a block.
-     A line too long for the viewport wraps with a hanging indent, so a
-     continuation never reads as a new line of verse. */
-
-  .poem{ margin: 0 0 clamp(3rem, 7vw, 4.5rem); }
-  .poem:last-child{ margin-bottom: 0; }
-
-  .poem-title{
-    font-family: var(--sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-    margin: 0 0 1.5rem;
-  }
-
-  .stanza{
-    margin: 0 0 1.55em;
-    hyphens: none;
-  }
-  .stanza:last-child{ margin-bottom: 0; }
-
-  .line{
-    display: block;
-    padding-left: 1.4em;
-    text-indent: -1.4em;
-    line-height: 1.5;
-  }
-  .line.indent-1{ margin-left: 2ch; }
-  .line.indent-2{ margin-left: 4ch; }
-  .line.indent-3{ margin-left: 6ch; }
-
-  /* ---------- Publication apparatus ---------- */
-
-  .poem-note{
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.01em;
-    color: var(--ink-faint);
-    margin: 1.6rem 0 0;
-  }
-
-  /* Publication record: language of the poems > status > titles and venue. */
-  .pub-group + .pub-group{ margin-top: 2.6rem; }
-
-  .pub-lang{
-    font-family: var(--sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-    margin: 0 0 1.1rem;
-  }
-
-  .publications{
-    font-family: var(--sans);
-    font-size: 0.8125rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    max-width: 34rem;
-    margin: 0;
-  }
-  .publications dt{
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin: 0 0 0.45rem;
-  }
-  .publications dd{ margin: 0; }
-  .publications dd + dd{ margin-top: 0.4rem; }
-  .publications dd + dt{ margin-top: 1.6rem; }
-
-  .poem-note cite,
-  .publications cite{ font-style: italic; }
-
-  /* ---------- Contact form ---------- */
-
-  .form{
-    max-width: 34rem;
-    margin: 0;
-  }
-
-  .form-row{ margin-bottom: 1.85rem; }
-
-  .form label{
-    display: block;
-    font-family: var(--sans);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 0.55rem;
-  }
-
-  .form input[type="text"],
-  .form input[type="email"],
-  .form textarea{
-    display: block;
-    width: 100%;
-    font-family: var(--serif);
-    font-size: 1rem;
-    line-height: 1.55;
-    color: var(--ink);
-    background: none;
-    border: 0;
-    border-bottom: 1px solid var(--rule);
-    border-radius: 0;
-    padding: 0.35rem 0;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .form textarea{
-    min-height: 9.5rem;
-    resize: vertical;
-  }
-
-  .form input:hover,
-  .form textarea:hover{ border-bottom-color: var(--ink-faint); }
-
-  .form input:focus,
-  .form textarea:focus{ border-bottom-color: var(--accent); }
-
-  .form input:focus-visible,
-  .form textarea:focus-visible{
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
-
-  /* Spam trap. Hidden from sight, keyboard and assistive technology. */
-  .gotcha{
-    display: none;
-  }
-
-  .submit{
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink);
-    background: none;
-    border: 1px solid var(--ink-faint);
-    border-radius: 0;
-    padding: 0.72rem 1.7rem;
-    margin-top: 0.6rem;
-    cursor: pointer;
-  }
-  .submit:hover{
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .aside{
-    font-family: var(--sans);
-    font-size: 0.8125rem;
-    color: var(--ink-soft);
-    max-width: 34rem;
-    margin: 2.6rem 0 0;
-  }
-
-  /* ---------- Desktop: two fields ---------- */
-
-  @media (min-width: 62em){
-    .page{
-      display: grid;
-      grid-template-columns: 12.5rem minmax(0, 44rem);
-      column-gap: clamp(3.5rem, 7vw, 7rem);
-      justify-content: center;
-      align-items: start;
-    }
-
-    .rail{
-      grid-column: 1;
-      grid-row: 1;
-      position: sticky;
-      top: clamp(2.5rem, 7vw, 5.5rem);
-      padding-bottom: 0;
-      margin-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .rail-meta{
-      display: block;
-      margin-top: 1.1rem;
-    }
-    .langswitch{ margin-top: 1.6rem; }
-    .rail-photo{
-      width: 9.5rem;
-      margin-top: 1.9rem;
-    }
-
-    .railnav ul{
-      display: block;
-    }
-    .railnav li + li{ margin-top: 0.55rem; }
-
-    .field{ grid-column: 2; grid-row: 1; }
-  }
-</style>
-
-<script>document.documentElement.className = "js lang-pt";</script>
+<script>
+  (function () {
+    var lang = "pt";
+    try { if (sessionStorage.getItem("lang") === "en") lang = "en"; } catch (e) {}
+    document.documentElement.className = "js lang-" + lang;
+    document.documentElement.lang = lang;
+  })();
+</script>
 </head>
 
 <body>
@@ -429,7 +55,7 @@
 
     <nav class="railnav" data-lang="pt" lang="pt" aria-label="Seções">
       <ul>
-        <li><a href="#poemas">Poemas</a></li>
+        <li><a href="poems.html">Poemas</a></li>
         <li><a href="#publicacoes">Publicações</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -438,6 +64,7 @@
 
     <nav class="railnav" data-lang="en" lang="en" aria-label="Sections">
       <ul>
+        <li><a href="poems.html">Poems</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -451,34 +78,17 @@
     <div data-lang="pt" lang="pt">
       <p class="lang-marker">Português</p>
 
-      <section class="section" id="poemas" aria-labelledby="poemas-head">
-        <h2 class="section-head" id="poemas-head">Poemas</h2>
+      <section class="section" id="poema" aria-labelledby="poema-head">
+        <h2 class="section-head" id="poema-head">Poema</h2>
 
         <!--
-          PONTO DE INSERÇÃO DOS POEMAS.
-
-          Um poema por <article class="poem">. Uma estrofe por <p class="stanza">.
-          Um verso por <span class="line">. Nada de <br>: a estrutura fica no HTML,
-          nunca no CSS, e assim quebras de verso, quebras de estrofe, recuo,
-          pontuação e maiúsculas ficam preservados exatamente como escritos.
-
-          <article class="poem">
-            <h3 class="poem-title">Título do poema</h3>
-            <p class="stanza">
-              <span class="line">verso</span>
-              <span class="line">verso</span>
-            </p>
-            <p class="stanza">
-              <span class="line">verso</span>
-              <span class="line indent-1">verso recuado</span>
-            </p>
-          </article>
-
-          Recuo deliberado: class="line indent-1" (ou indent-2, indent-3).
-          Linha em branco dentro de uma estrofe: <span class="line">&#160;</span>
+          Poema em destaque. A versão autoritativa de cada poema está em
+          poems.html; o site.js escolhe um ao acaso e substitui esta cópia.
+          Sem JavaScript, esta cópia é o poema mostrado. Mantê-la idêntica
+          à de poems.html; novos poemas acrescentam-se apenas a poems.html.
         -->
-
-        <article class="poem">
+        <div data-featured="pt">
+        <article class="poem" id="saideira">
           <h3 class="poem-title">Saideira</h3>
           <p class="stanza">
             <span class="line">O que era sol</span>
@@ -502,6 +112,7 @@
           </p>
           <p class="poem-note">Derivado de <cite>O Churrasco</cite>.</p>
         </article>
+        </div>
       </section>
 
       <section class="section" id="publicacoes" aria-labelledby="publicacoes-head">
@@ -585,6 +196,50 @@
     <div data-lang="en" lang="en">
       <p class="lang-marker">English</p>
 
+      <section class="section" id="poem" aria-labelledby="poem-head">
+        <h2 class="section-head" id="poem-head">Poem</h2>
+
+        <!--
+          Featured poem. The authoritative copy of every poem lives in
+          poems.html; site.js picks one at random and replaces this copy.
+          Without JavaScript this copy is what shows. Keep it identical to
+          poems.html; new poems are added to poems.html only.
+        -->
+        <div data-featured="en">
+        <article class="poem" id="becoming-a-poet">
+          <h3 class="poem-title">Becoming a Poet</h3>
+          <p class="stanza">
+            <span class="line">Walking my dog, I hear</span>
+            <span class="line">a podcast host ask his guest:</span>
+            <span class="line">“When did you become a poet?”</span>
+          </p>
+          <p class="stanza">
+            <span class="line">I mull over how to uncover</span>
+            <span class="line">a poet. Is the horny</span>
+            <span class="line">teenager trying to get</span>
+            <span class="line">into Patricia’s pants, his verses filled</span>
+            <span class="line">with red roses and blue violets,</span>
+            <span class="line">a poet? The caffeinated student</span>
+            <span class="line">flunking math, sentences enjambed</span>
+            <span class="line">with equations and sorrows? Gina,</span>
+            <span class="line">drying her tears between</span>
+            <span class="line">the lines, while searching for words</span>
+            <span class="line">that rhyme with hole—her boyfriend</span>
+            <span class="line">drooling over Patricia? My father-in-law</span>
+            <span class="line">reciting poems about men</span>
+            <span class="line">from Nantucket? Must poets write</span>
+            <span class="line">sonnets? Perhaps you’re finally a poet</span>
+            <span class="line">when someone wonders</span>
+            <span class="line">“When did you become a poet?”</span>
+          </p>
+          <p class="stanza">
+            <span class="line">I forgot the poop bag.</span>
+          </p>
+          <p class="poem-note">First published in <a href="https://ratsassreview.net/?page_id=4627#Barros2" rel="noopener">Rat’s Ass Review</a>, Fall–Winter 2026.</p>
+        </article>
+        </div>
+      </section>
+
       <section class="section" id="publications" aria-labelledby="publications-head">
         <h2 class="section-head" id="publications-head">Publications</h2>
 
@@ -666,27 +321,7 @@
 
 </div>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var buttons = document.querySelectorAll(".langswitch button");
-
-    function setLang(lang) {
-      root.classList.remove("lang-pt", "lang-en");
-      root.classList.add("lang-" + lang);
-      root.lang = lang;
-      for (var i = 0; i < buttons.length; i++) {
-        buttons[i].setAttribute("aria-pressed", String(buttons[i].dataset.setLang === lang));
-      }
-    }
-
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener("click", function () {
-        setLang(this.dataset.setLang);
-      });
-    }
-  })();
-</script>
+<script src="site.js"></script>
 
 </body>
 </html>

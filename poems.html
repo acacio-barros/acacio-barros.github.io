@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Poemas / Poems — Acacio Barros</title>
+<meta name="description" content="Poems by Acacio Barros, in Portuguese and English.">
+<meta name="author" content="Acacio Barros">
+<link rel="canonical" href="https://acacio-barros.github.io/poems.html">
+<meta name="theme-color" content="#faf9f7">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://acacio-barros.github.io/poems.html">
+<meta property="og:title" content="Poemas / Poems — Acacio Barros">
+<meta property="og:description" content="Poems by Acacio Barros, in Portuguese and English.">
+<meta property="og:image" content="https://acacio-barros.github.io/images/sea-foam-rock-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+
+<link rel="stylesheet" href="site.css">
+
+<script>
+  (function () {
+    var lang = "pt";
+    try { if (sessionStorage.getItem("lang") === "en") lang = "en"; } catch (e) {}
+    document.documentElement.className = "js lang-" + lang;
+    document.documentElement.lang = lang;
+  })();
+</script>
+</head>
+
+<body>
+
+<div class="page">
+
+  <header class="rail">
+    <h1 class="wordmark">Acacio Barros</h1>
+
+    <div class="rail-meta">
+      <p class="discipline">
+        <span data-lang="pt" lang="pt">Poesia</span><span data-lang="en" lang="en">Poetry</span>
+      </p>
+
+      <div class="langswitch" role="group" aria-label="Idioma / Language">
+        <button type="button" data-set-lang="pt" aria-pressed="true">PT</button>
+        <span class="langsep" aria-hidden="true">/</span>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <img class="rail-photo" src="images/sea-foam-rock-rail.jpg" width="320" height="400" alt="" decoding="async">
+
+    <nav class="railnav" data-lang="pt" lang="pt" aria-label="Seções">
+      <ul>
+        <li><a href="poems.html" aria-current="page">Poemas</a></li>
+        <li><a href="./#publicacoes">Publicações</a></li>
+        <li><a href="./#sobre">Sobre</a></li>
+        <li><a href="./#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <nav class="railnav" data-lang="en" lang="en" aria-label="Sections">
+      <ul>
+        <li><a href="poems.html" aria-current="page">Poems</a></li>
+        <li><a href="./#publications">Publications</a></li>
+        <li><a href="./#about">About</a></li>
+        <li><a href="./#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="field">
+
+    <!-- ===================== Português ===================== -->
+    <div data-lang="pt" lang="pt">
+      <p class="lang-marker">Português</p>
+
+      <section class="section" id="poemas" aria-labelledby="poemas-head">
+        <h2 class="section-head" id="poemas-head">Poemas</h2>
+
+        <!--
+          Esta página é a versão autoritativa de todos os poemas alojados.
+          A página inicial escolhe daqui, ao acaso, um poema por idioma.
+
+          Um poema por <article class="poem" id="…"> — o id tem de ser único.
+          Uma estrofe por <p class="stanza">. Um verso por <span class="line">.
+          Nada de <br>: a estrutura fica no HTML, nunca no CSS, e assim quebras
+          de verso, quebras de estrofe, recuo, pontuação e maiúsculas ficam
+          preservados exatamente como escritos.
+
+          Recuo deliberado: class="line indent-1" (ou indent-2, indent-3).
+          Linha em branco dentro de uma estrofe: <span class="line">&#160;</span>
+        -->
+
+        <article class="poem" id="saideira">
+          <h3 class="poem-title">Saideira</h3>
+          <p class="stanza">
+            <span class="line">O que era sol</span>
+            <span class="line indent-1">agora é noite</span>
+            <span class="line">E o que era folia</span>
+            <span class="line indent-1">agora é sossego</span>
+            <span class="line">E o que era areia</span>
+            <span class="line indent-1">agora é fogueira</span>
+            <span class="line">E o que era brisa</span>
+            <span class="line indent-1">agora é arrepio</span>
+          </p>
+          <p class="stanza">
+            <span class="line">O que era roda</span>
+            <span class="line indent-1">agora é dupla</span>
+            <span class="line">O que era olhar desviado</span>
+            <span class="line indent-1">agora é toque</span>
+          </p>
+          <p class="stanza">
+            <span class="line">O que era praia</span>
+            <span class="line indent-1">agora—estrelas.</span>
+          </p>
+          <p class="poem-note">Derivado de <cite>O Churrasco</cite>.</p>
+        </article>
+      </section>
+    </div>
+
+    <!-- ===================== English ===================== -->
+    <div data-lang="en" lang="en">
+      <p class="lang-marker">English</p>
+
+      <section class="section" id="poems" aria-labelledby="poems-head">
+        <h2 class="section-head" id="poems-head">Poems</h2>
+
+        <article class="poem" id="becoming-a-poet">
+          <h3 class="poem-title">Becoming a Poet</h3>
+          <p class="stanza">
+            <span class="line">Walking my dog, I hear</span>
+            <span class="line">a podcast host ask his guest:</span>
+            <span class="line">“When did you become a poet?”</span>
+          </p>
+          <p class="stanza">
+            <span class="line">I mull over how to uncover</span>
+            <span class="line">a poet. Is the horny</span>
+            <span class="line">teenager trying to get</span>
+            <span class="line">into Patricia’s pants, his verses filled</span>
+            <span class="line">with red roses and blue violets,</span>
+            <span class="line">a poet? The caffeinated student</span>
+            <span class="line">flunking math, sentences enjambed</span>
+            <span class="line">with equations and sorrows? Gina,</span>
+            <span class="line">drying her tears between</span>
+            <span class="line">the lines, while searching for words</span>
+            <span class="line">that rhyme with hole—her boyfriend</span>
+            <span class="line">drooling over Patricia? My father-in-law</span>
+            <span class="line">reciting poems about men</span>
+            <span class="line">from Nantucket? Must poets write</span>
+            <span class="line">sonnets? Perhaps you’re finally a poet</span>
+            <span class="line">when someone wonders</span>
+            <span class="line">“When did you become a poet?”</span>
+          </p>
+          <p class="stanza">
+            <span class="line">I forgot the poop bag.</span>
+          </p>
+          <p class="poem-note">First published in <a href="https://ratsassreview.net/?page_id=4627#Barros2" rel="noopener">Rat’s Ass Review</a>, Fall–Winter 2026.</p>
+        </article>
+      </section>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="site.js"></script>
+
+</body>
+</html>
