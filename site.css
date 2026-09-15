@@ -251,6 +251,8 @@ button:focus-visible{
 .line.indent-1{ margin-left: 2ch; }
 .line.indent-2{ margin-left: 4ch; }
 .line.indent-3{ margin-left: 6ch; }
+/* A deliberate pause inside a line: space that must survive HTML whitespace collapsing. */
+.caesura{ margin-left: 2ch; }
 
 /* ---------- Publication apparatus ---------- */
 
