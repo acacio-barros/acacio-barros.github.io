@@ -385,6 +385,18 @@ button:focus-visible{
   margin: 2.6rem 0 0;
 }
 
+/* ---------- Colophon ---------- */
+
+.colophon{
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+  max-width: 44rem;
+  margin: clamp(3.5rem, 9vw, 6rem) 0 0;
+}
+.colophon p{ margin: 0; }
+
 /* ---------- Desktop: two fields ---------- */
 
 @media (min-width: 62em){
@@ -422,6 +434,7 @@ button:focus-visible{
   .railnav li + li{ margin-top: 0.55rem; }
 
   .field{ grid-column: 2; grid-row: 1; }
+  .colophon{ grid-column: 2; grid-row: 2; }
 
   .poemindex{ display: none; }
 
