@@ -5,7 +5,7 @@
       session (kept in sessionStorage) always wins.
    2. Otherwise the browser's preferred languages are read locally, in the
       order the browser lists them; the first that is Portuguese or English
-      decides. If neither appears, English.
+      decides. If neither appears, Portuguese.
 
    Nothing is stored here and nothing leaves the browser. */
 
@@ -29,7 +29,7 @@
     }
   }
 
-  if (!lang) lang = "en";
+  if (!lang) lang = "pt";
 
   document.documentElement.className = "js lang-" + lang;
   document.documentElement.lang = lang;
