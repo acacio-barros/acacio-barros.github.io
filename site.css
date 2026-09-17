@@ -249,7 +249,8 @@ button:focus-visible{
 
 /* ---------- Publication apparatus ---------- */
 
-.poem-note{
+.poem-note,
+.fineprint{
   font-family: var(--sans);
   font-size: 0.75rem;
   letter-spacing: 0.01em;
@@ -260,7 +261,8 @@ button:focus-visible{
 /* Publication record: language of the poems > status > titles and venue. */
 .pub-group + .pub-group{ margin-top: 2.6rem; }
 
-.pub-lang{
+.pub-lang,
+.subhead{
   font-family: var(--sans);
   font-size: 0.9375rem;
   font-weight: 600;
@@ -379,6 +381,17 @@ button:focus-visible{
 }
 .aside a{ color: var(--ink); }
 
+/* ---------- Prose pages (privacy) ---------- */
+
+.subhead{ margin: 2.4rem 0 0.9rem; }
+.section-head + .subhead{ margin-top: 0; }
+.fineprint{ margin-top: 2.4rem; }
+
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
+
 /* ---------- Colophon ---------- */
 
 .colophon{
@@ -389,6 +402,16 @@ button:focus-visible{
   margin: clamp(3.5rem, 9vw, 6rem) 0 0;
 }
 .colophon p{ margin: 0; }
+.colophon-sep{ margin: 0 0.3rem; }
+
+.form-note{
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--ink-faint);
+  max-width: 34rem;
+  margin: 1.2rem 0 0;
+}
 
 /* ---------- Desktop: two fields ---------- */
 

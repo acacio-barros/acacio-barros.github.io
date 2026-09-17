@@ -21,14 +21,7 @@
 
 <link rel="stylesheet" href="site.css">
 
-<script>
-  (function () {
-    var lang = "pt";
-    try { if (sessionStorage.getItem("lang") === "en") lang = "en"; } catch (e) {}
-    document.documentElement.className = "js lang-" + lang;
-    document.documentElement.lang = lang;
-  })();
-</script>
+<script src="lang-init.js"></script>
 </head>
 
 <body>
@@ -464,8 +457,12 @@
 
   </main>
 
-  <footer class="colophon" lang="en">
-    <p>© 2026 Acacio Barros. All rights reserved.</p>
+  <footer class="colophon">
+    <p>
+      <span lang="en">© 2026 Acacio Barros. All rights reserved.</span>
+      <span class="colophon-sep" aria-hidden="true">·</span>
+      <a href="privacy.html" data-lang="pt" lang="pt">Privacidade</a><a href="privacy.html" data-lang="en" lang="en">Privacy</a>
+    </p>
   </footer>
 
 </div>

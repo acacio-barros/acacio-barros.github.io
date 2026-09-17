@@ -22,14 +22,7 @@
 
 <link rel="stylesheet" href="site.css">
 
-<script>
-  (function () {
-    var lang = "pt";
-    try { if (sessionStorage.getItem("lang") === "en") lang = "en"; } catch (e) {}
-    document.documentElement.className = "js lang-" + lang;
-    document.documentElement.lang = lang;
-  })();
-</script>
+<script src="lang-init.js"></script>
 </head>
 
 <body>
@@ -190,6 +183,7 @@
 
           <button class="submit" type="submit">Enviar</button>
         </form>
+        <p class="form-note">Ao enviar este formulário, seus dados serão processados conforme descrito na <a href="privacy.html">Política de Privacidade</a>.</p>
 
         <p class="aside"><a href="https://www.instagram.com/acacio.barros.poet/" rel="noopener">@acacio.barros.poet</a> no Instagram</p>
       </section>
@@ -319,6 +313,7 @@
 
           <button class="submit" type="submit">Send</button>
         </form>
+        <p class="form-note">Information submitted through this form is processed as described in the <a href="privacy.html">Privacy Policy</a>.</p>
 
         <p class="aside"><a href="https://www.instagram.com/acacio.barros.poet/" rel="noopener">@acacio.barros.poet</a> on Instagram</p>
       </section>
@@ -326,8 +321,12 @@
 
   </main>
 
-  <footer class="colophon" lang="en">
-    <p>© 2026 Acacio Barros. All rights reserved.</p>
+  <footer class="colophon">
+    <p>
+      <span lang="en">© 2026 Acacio Barros. All rights reserved.</span>
+      <span class="colophon-sep" aria-hidden="true">·</span>
+      <a href="privacy.html" data-lang="pt" lang="pt">Privacidade</a><a href="privacy.html" data-lang="en" lang="en">Privacy</a>
+    </p>
   </footer>
 
 </div>
