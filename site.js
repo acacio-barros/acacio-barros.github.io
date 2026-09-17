@@ -23,13 +23,10 @@
     root.classList.remove("lang-pt", "lang-en");
     root.classList.add("lang-" + lang);
     root.lang = lang;
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].setAttribute("aria-pressed", String(buttons[i].dataset.setLang === lang));
-    }
     store.set("lang", lang);
   }
 
-  // The inline head script has already applied the stored language; sync the buttons to it.
+  // The inline head script has already applied the stored language; record it for the session.
   setLang(root.classList.contains("lang-en") ? "en" : "pt");
 
   for (var i = 0; i < buttons.length; i++) {
