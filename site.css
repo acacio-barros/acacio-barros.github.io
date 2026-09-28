@@ -244,9 +244,11 @@ button:focus-visible{
 .line.indent-1{ margin-left: 2ch; }
 .line.indent-2{ margin-left: 4ch; }
 .line.indent-3{ margin-left: 6ch; }
-/* Decidido: "O copo" sits 26 characters in, as written. Capped at 55% of the
-   measure so the displacement stays clear on phones without overflowing. */
-.line.indent-decidido-copo{ margin-left: min(26ch, 55%); }
+/* Decidido: "O copo" begins where it would if it continued the previous line,
+   so the offset is the rendered width of "Começo a revisão. " itself. The
+   spacer keeps that width but is not painted, not selectable, and hidden from
+   assistive technology. */
+.decidido-copo-spacer{ visibility: hidden; }
 /* A deliberate pause inside a line: space that must survive HTML whitespace collapsing. */
 .caesura{ margin-left: 2ch; }
 
