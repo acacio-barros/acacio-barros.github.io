@@ -1,4 +1,4 @@
-/* Acacio Barros — poetry site script. Shared by index.html and poems.html.
+/* Acácio Barros — poetry site script. Shared by index.html and poems.html.
 
    1. Language switch. A language the reader chooses is kept for the browser
       session so it survives moving between pages (initial language:

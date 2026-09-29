@@ -1,12 +1,13 @@
 # CLAUDE.md
 
 ## Project
-This repository contains the personal literary website of Acacio Barros, focused primarily on poetry.
+This repository contains the personal literary website of Acácio Barros, focused primarily on poetry.
 This site is distinct from my academic website and professional identity as a professor and researcher. Do not import assumptions, language, visual conventions, biographical emphasis, or content from my academic website unless I explicitly request it.
 The purpose of this site is to present my poetry and literary work with clarity, restraint, and seriousness.
 
 ## Identity and Persona
-Treat Acacio Barros the poet as a distinct public-facing persona.
+Treat Acácio Barros the poet as a distinct public-facing persona.
+Use “Acácio Barros” as the public-facing author name throughout the website. Preserve unaccented forms in technical identifiers such as URLs, usernames, repository names, handles, filenames, and service endpoints.
 This does not mean inventing a fictional biography or concealing factual information. It means that the literary site should foreground the poetic work and the aspects of my identity relevant to it rather than my academic credentials.
 The site should primarily present me as a poet. Do not foreground my academic identity automatically. The approved biography identifies me as a physicist and philosopher; that wording is a deliberate editorial decision and is to be preserved as written. Beyond it, do not add academic credentials, institutional affiliations, professional titles, or professional biography unless I explicitly request them.
 Do not introduce academic terminology, intellectual credentials, institutional affiliations, or scholarly accomplishments unless I specifically decide they belong on this site.
