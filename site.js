@@ -21,7 +21,7 @@
   // lang-init.js has already applied the initial language (an explicit choice
   // from this session, else the browser's preference). Only a click here is
   // an explicit choice, and only that is stored.
-  var buttons = document.querySelectorAll(".langswitch button");
+  var buttons = document.querySelectorAll("button[data-set-lang]");
 
   function chooseLang(lang) {
     root.classList.remove("lang-pt", "lang-en");

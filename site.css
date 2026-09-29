@@ -34,7 +34,8 @@ body{
 .js.lang-en [data-lang="pt"]{ display: none; }
 .lang-marker{ display: none; }
 html:not(.js) .lang-marker{ display: block; }
-html:not(.js) .langswitch{ display: none; }
+html:not(.js) .discipline button,
+html:not(.js) .langsep{ display: none; }
 html:not(.js) .field > div + div{ margin-top: clamp(3.5rem, 9vw, 6rem); }
 
 a{
@@ -92,29 +93,23 @@ button:focus-visible{
   text-transform: uppercase;
   color: var(--ink-faint);
 }
-.discipline span{ display: block; }
+.discipline > span{ display: block; }
 
-.langswitch{ flex-shrink: 0; }
-
-/* One action, naming the language the reader can switch to. A real button,
-   styled as the site's text link. */
-.langswitch button{
+/* The second word is the switch: a real button wearing the label's own type,
+   a step darker than the current-language word and nothing more. */
+.discipline button{
   font: inherit;
-  font-size: 0.8125rem;
-  letter-spacing: 0.03em;
+  letter-spacing: inherit;
+  text-transform: inherit;
   background: none;
   border: 0;
-  border-bottom: 1px solid rgba(47,65,87,0.4);
   border-radius: 0;
   padding: 0;
   margin: 0;
   color: var(--ink-soft);
   cursor: pointer;
 }
-.langswitch button:hover{
-  color: var(--ink);
-  border-bottom-color: var(--accent);
-}
+.discipline button:hover{ color: var(--accent); }
 
 .rail-photo{
   display: block;
@@ -443,7 +438,6 @@ code{
     display: block;
     margin-top: 1.1rem;
   }
-  .langswitch{ margin-top: 1.6rem; }
   .rail-photo{
     width: 9.5rem;
     margin-top: 1.9rem;
